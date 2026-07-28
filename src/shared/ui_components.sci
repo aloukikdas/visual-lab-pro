@@ -1,4 +1,3 @@
-// Creates a flat, modern panel (card) to hold other elements
 function h = ui_create_panel(parent, position, bg_color)
     h = uicontrol(parent, ...
         "style", "frame", ...
@@ -7,7 +6,6 @@ function h = ui_create_panel(parent, position, bg_color)
         "relief", "flat"); // Scilab uses 'relief' to handle borders
 endfunction
 
-// Creates clean text with standard alignments
 function h = ui_create_text(parent, position, string_val, font_size, fg_color, bg_color)
     h = uicontrol(parent, ...
         "style", "text", ...
@@ -20,7 +18,6 @@ function h = ui_create_text(parent, position, string_val, font_size, fg_color, b
         "horizontalalignment", "center"); // Changed to center for better layout
 endfunction
 
-// Creates a prominent, clickable action button
 function h = ui_create_button(parent, position, string_val, callback_str, theme)
     h = uicontrol(parent, ...
         "style", "pushbutton", ...
