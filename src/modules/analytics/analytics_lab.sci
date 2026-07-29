@@ -1,22 +1,15 @@
-// analytics_lab.sci
-// Data Analytics and CSV parsing module with File I/O
-
 function render_analytics(win, theme)
     global VLP_CONTEXT;
     VLP_CONTEXT.analytics = struct(); 
     
-    // --- Top Navigation Bar ---
     ui_create_text(win, [50, 700, 500, 30], "DATA ANALYTICS: CSV Visualization", theme.font_size_h1, theme.accent, theme.bg_main);
     ui_create_button(win, [850, 695, 120, 40], "BACK", "navigate_to(""dashboard"");", theme);
     
-    // --- Left Control Panel ---
     ui_create_panel(win, [50, 100, 300, 550], theme.bg_panel);
     ui_create_text(win, [70, 610, 260, 20], "Data Controls", theme.font_size_h2, theme.text_primary, theme.bg_panel);
     
-    // Action Button
     ui_create_button(win, [70, 550, 260, 40], "UPLOAD CSV DATA", "process_uploaded_csv()", theme);
     
-    // Statistical Summary Labels (Compressed spacing to fit 5 stats)
     ui_create_text(win, [70, 500, 260, 15], "Maximum Value:", 10, theme.text_secondary, theme.bg_panel);
     VLP_CONTEXT.analytics.lbl_max = ui_create_text(win, [70, 470, 260, 25], "--", theme.font_size_h2, theme.text_primary, theme.bg_panel);
     
@@ -31,13 +24,11 @@ function render_analytics(win, theme)
 
     ui_create_text(win, [70, 260, 260, 15], "Standard Deviation:", 10, theme.text_secondary, theme.bg_panel);
     VLP_CONTEXT.analytics.lbl_stdev = ui_create_text(win, [70, 230, 260, 25], "--", theme.font_size_h2, theme.text_primary, theme.bg_panel);
-    
-    // --- Right Stage Panel (Output) ---
+
     norm_axes_pos = get_normalized_pos([430, 100, 540, 550]);
     VLP_CONTEXT.analytics.ax = newaxes();
     VLP_CONTEXT.analytics.ax.axes_bounds = norm_axes_pos;
     
-    // Initialize empty dark mode axes
     a = VLP_CONTEXT.analytics.ax; 
     a.background = color(30, 30, 46);      
     a.foreground = color(166, 172, 205);   
@@ -48,30 +39,20 @@ function render_analytics(win, theme)
     a.title.font_size = 4;
 endfunction
 
-// --- Data Processing Logic ---
 function process_uploaded_csv()
     global VLP_CONTEXT;
-    
-    // 1. Open Native OS File Explorer to select a CSV
     file_path = uigetfile("*.csv", "", "Select a 2-Column CSV Data File");
-    
     if file_path == "" then
         return; 
     end
-    
-    // 2. Safely Attempt to Parse the File
     try
-        // csvRead will quietly convert text into NaN (Not a Number)
         dataset = csvRead(file_path);
         
-        // [NEW FIX]: Explicitly check if the dataset contains any NaN values
-        // 'isnan' returns a boolean matrix, 'or' checks if ANY of them are true
         if or(isnan(dataset)) then
             messagebox("Invalid data! Ensure the CSV contains only numbers (remove any text headers or words).", "Data Format Error", "error");
             return;
         end
         
-        // Validation Rule: Must have at least 2 columns to plot X and Y
         if size(dataset, 2) < 2 then
             messagebox("Invalid format! Please upload a CSV with at least 2 numeric columns (X and Y).", "Data Format Error", "error");
             return;
@@ -81,25 +62,21 @@ function process_uploaded_csv()
         return;
     end
     
-    // Extract columns
     x_data = dataset(:, 1);
     y_data = dataset(:, 2);
     
-    // 3. Calculate Expanded Statistics
     val_max = max(y_data);
     val_min = min(y_data);
     val_mean = mean(y_data);
     val_median = median(y_data);
     val_stdev = stdev(y_data);
-    
-    // 4. Update UI Labels
+
     VLP_CONTEXT.analytics.lbl_max.string = msprintf("%.2f", val_max);
     VLP_CONTEXT.analytics.lbl_min.string = msprintf("%.2f", val_min);
     VLP_CONTEXT.analytics.lbl_mean.string = msprintf("%.2f", val_mean);
     VLP_CONTEXT.analytics.lbl_median.string = msprintf("%.2f", val_median);
     VLP_CONTEXT.analytics.lbl_stdev.string = msprintf("%.2f", val_stdev);
     
-    // 5. Render Data Plot
     sca(VLP_CONTEXT.analytics.ax); 
     drawlater();                 
     
