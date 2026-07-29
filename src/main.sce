@@ -7,6 +7,7 @@ VLP_CONTEXT = struct();
 exec("src/utils/theme.sci", -1);
 exec("src/shared/ui_components.sci", -1);
 exec("src/modules/dashboard/dashboard.sci", -1);
+exec("src/modules/physics/physics_lab.sci", -1);
 exec("src/core/router.sci", -1);
 
 VLP_CONTEXT.theme = get_theme();
@@ -15,5 +16,8 @@ VLP_CONTEXT.window = figure("figure_name", "Visual Lab Pro", ...
     "backgroundcolor", VLP_CONTEXT.theme.bg_main, ...
     "menubar", "none", ...
     "toolbar", "none");
+
+a = gca();
+a.visible = "off";
 
 navigate_to("dashboard");
