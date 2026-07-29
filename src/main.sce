@@ -1,14 +1,19 @@
 clear; clc; 
 if ~isempty(winsid()) then close(winsid()); end
+
+global VLP_CONTEXT;
+VLP_CONTEXT = struct();
+
 exec("src/utils/theme.sci", -1);
 exec("src/shared/ui_components.sci", -1);
-theme = get_theme();
-mainWindow = figure("figure_name", "Visual Lab Pro - Architecture Test", ...
+exec("src/modules/dashboard/dashboard.sci", -1);
+exec("src/core/router.sci", -1);
+
+VLP_CONTEXT.theme = get_theme();
+VLP_CONTEXT.window = figure("figure_name", "Visual Lab Pro", ...
     "position", [100, 100, 1024, 768], ...
-    "backgroundcolor", theme.bg_main, ...
+    "backgroundcolor", VLP_CONTEXT.theme.bg_main, ...
     "menubar", "none", ...
     "toolbar", "none");
-testPanel = ui_create_panel(mainWindow, [312, 234, 400, 300], theme.bg_panel);
-testTitle = ui_create_text(mainWindow, [312, 450, 400, 30], "Architecture Approved", theme.font_size_h1, theme.text_primary, theme.bg_panel);
-testSub = ui_create_text(mainWindow, [312, 410, 400, 20], "UI Framework is active.", theme.font_size_body, theme.text_secondary, theme.bg_panel);
-testBtn = ui_create_button(mainWindow, [412, 280, 200, 40], "PROCEED TO NAV", "", theme);
+
+navigate_to("dashboard");
