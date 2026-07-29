@@ -3,7 +3,7 @@ function render_dashboard(win, theme)
     ui_create_text(win, [212, 560, 600, 20], "Interactive Engineering & STEM Virtual Laboratory", theme.font_size_body, theme.text_secondary, theme.bg_main);
     
     ui_create_button(win, [237, 400, 250, 60], "PHYSICS LAB", "navigate_to(""physics"");", theme);
-    ui_create_button(win, [237, 300, 250, 60], "CIRCUIT LAB", "disp(""Routing to Circuits..."");", theme);
+    ui_create_button(win, [237, 300, 250, 60], "CIRCUIT LAB", "navigate_to(""circuit"");", theme);
     ui_create_button(win, [537, 400, 250, 60], "DATA ANALYTICS", "navigate_to(""analytics"");", theme);
     ui_create_button(win, [537, 300, 250, 60], "FINANCE LAB", "disp(""Routing to Finance..."");", theme);
 
