@@ -4,8 +4,7 @@ function render_dashboard(win, theme)
     
     ui_create_button(win, [237, 400, 250, 60], "PHYSICS LAB", "navigate_to(""physics"");", theme);
     ui_create_button(win, [237, 300, 250, 60], "CIRCUIT LAB", "disp(""Routing to Circuits..."");", theme);
-    
-    ui_create_button(win, [537, 400, 250, 60], "DATA ANALYTICS", "disp(""Routing to Analytics..."");", theme);
+    ui_create_button(win, [537, 400, 250, 60], "DATA ANALYTICS", "navigate_to(""analytics"");", theme);
     ui_create_button(win, [537, 300, 250, 60], "FINANCE LAB", "disp(""Routing to Finance..."");", theme);
 
     ui_create_text(win, [312, 50, 400, 20], "FOSSEE Scilab GUIVerse Hackathon", 10, theme.text_secondary, theme.bg_main);

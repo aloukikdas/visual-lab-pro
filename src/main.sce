@@ -8,6 +8,7 @@ exec("src/utils/theme.sci", -1);
 exec("src/shared/ui_components.sci", -1);
 exec("src/modules/dashboard/dashboard.sci", -1);
 exec("src/modules/physics/physics_lab.sci", -1);
+exec("src/modules/analytics/analytics_lab.sci", -1);
 exec("src/core/router.sci", -1);
 
 VLP_CONTEXT.theme = get_theme();

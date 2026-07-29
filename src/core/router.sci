@@ -11,6 +11,8 @@ function navigate_to(screen_name)
             render_dashboard(VLP_CONTEXT.window, VLP_CONTEXT.theme);
         case "physics" then
             render_physics(VLP_CONTEXT.window, VLP_CONTEXT.theme);
+        case "analytics" then
+            render_analytics(VLP_CONTEXT.window, VLP_CONTEXT.theme);
         else
             disp("404 Error: Module not found -> " + screen_name);
     end
