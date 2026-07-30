@@ -4,8 +4,10 @@ function navigate_to(screen_name)
     if ~isempty(current_ui) then
         delete(current_ui);
     end
+    
     a = gca();
     a.visible = "off";
+    
     select screen_name
         case "dashboard" then
             render_dashboard(VLP_CONTEXT.window, VLP_CONTEXT.theme);

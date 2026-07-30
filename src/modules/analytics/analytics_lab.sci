@@ -45,14 +45,13 @@ function process_uploaded_csv()
     if file_path == "" then
         return; 
     end
+    
     try
         dataset = csvRead(file_path);
-        
         if or(isnan(dataset)) then
             messagebox("Invalid data! Ensure the CSV contains only numbers (remove any text headers or words).", "Data Format Error", "error");
             return;
         end
-        
         if size(dataset, 2) < 2 then
             messagebox("Invalid format! Please upload a CSV with at least 2 numeric columns (X and Y).", "Data Format Error", "error");
             return;
@@ -70,7 +69,7 @@ function process_uploaded_csv()
     val_mean = mean(y_data);
     val_median = median(y_data);
     val_stdev = stdev(y_data);
-
+    
     VLP_CONTEXT.analytics.lbl_max.string = msprintf("%.2f", val_max);
     VLP_CONTEXT.analytics.lbl_min.string = msprintf("%.2f", val_min);
     VLP_CONTEXT.analytics.lbl_mean.string = msprintf("%.2f", val_mean);

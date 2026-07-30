@@ -19,8 +19,8 @@ VLP_CONTEXT.window = figure("figure_name", "Visual Lab Pro", ...
     "backgroundcolor", VLP_CONTEXT.theme.bg_main, ...
     "menubar", "none", ...
     "toolbar", "none");
+datatipManagerMode(VLP_CONTEXT.window, "on");
 
 a = gca();
 a.visible = "off";
-
 navigate_to("dashboard");
