@@ -204,8 +204,8 @@ function start_circuit_sim()
         VLP_CONTEXT.circuit.is_playing = %f;
         VLP_CONTEXT.circuit.txt_switch.text = "Switch: OFF";
         VLP_CONTEXT.circuit.txt_switch.font_foreground = color("white");
-        VLP_CONTEXT.circuit.switch_arm.data = [4.8, 1; 5.2, 1.5]; // Pop switch open
-        update_circuit_plot(); // Kills the bulb instantly
+        VLP_CONTEXT.circuit.switch_arm.data = [4.8, 1; 5.2, 1.5];
+        update_circuit_plot();
     catch
     end
 endfunction
