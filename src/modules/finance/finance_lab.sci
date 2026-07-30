@@ -37,7 +37,7 @@ function render_finance(win, theme)
     a.title.font_size = 4;
     a.x_label.text = "Time (Years)";
     a.x_label.font_color = color("white");
-    a.y_label.text = "Value (₹)";
+    a.y_label.text = "Value (₹ in Lakhs)";
     a.y_label.font_color = color("white");
     
     plot([0], [0], "w"); 
@@ -86,13 +86,13 @@ function update_finance_plot()
     VLP_CONTEXT.finance.lbl_time.string = string(round(years)) + " Years";
     VLP_CONTEXT.finance.lbl_invested.string = format_inr(total_invested);
     VLP_CONTEXT.finance.lbl_wealth.string = format_inr(total_wealth);
-    drawlater();                 
     
-    VLP_CONTEXT.finance.line_invested.data = [years_arr', invested_arr'];
-    VLP_CONTEXT.finance.line_wealth.data = [years_arr', wealth_arr'];
-    
+    drawlater();
+    VLP_CONTEXT.finance.line_invested.data = [years_arr', invested_arr' / 100000];
+    VLP_CONTEXT.finance.line_wealth.data = [years_arr', wealth_arr' / 100000];
     a = VLP_CONTEXT.finance.ax;
-    a.data_bounds = [0, 0; years, total_wealth + (total_wealth * 0.1)]; 
+    scaled_max_wealth = total_wealth / 100000;
+    a.data_bounds = [0, 0; years, scaled_max_wealth + (scaled_max_wealth * 0.1)]; 
     
     drawnow();                   
 endfunction
