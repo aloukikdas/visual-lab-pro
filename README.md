@@ -40,7 +40,7 @@ During development, we encountered a known limitation in Scilab 6: mixing Java S
 ## 👨‍💻 Author
 
 **Aloukik Das**
-* **GitHub:** [https://github.com/yourusername](https://github.com/aloukikdas)
+* **GitHub:** [https://github.com/aloukikdas](https://github.com/aloukikdas)
 * **LinkedIn:** [https://www.linkedin.com/in/aloukik-das-0a8685304](https://www.linkedin.com/in/aloukik-das-0a8685304)
 * **Project Link:** [https://github.com/aloukikdas/visual-lab-pro](https://github.com/aloukikdas/visual-lab-pro)
 
