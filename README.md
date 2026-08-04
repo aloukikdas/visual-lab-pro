@@ -34,3 +34,18 @@ During development, we encountered a known limitation in Scilab 6: mixing Java S
 1. Open Scilab 6.x.
 2. Set your working directory to the `visual-lab-pro` root folder.
 3. Run `exec("src/main.sce");`
+
+---
+
+## 👨‍💻 Author
+
+**Aloukik Das**
+* **GitHub:** [https://github.com/yourusername](https://github.com/aloukikdas)
+* **LinkedIn:** [https://www.linkedin.com/in/aloukik-das-0a8685304](https://www.linkedin.com/in/aloukik-das-0a8685304)
+* **Project Link:** [https://github.com/aloukikdas/visual-lab-pro](https://github.com/aloukikdas/visual-lab-pro)
+
+## 🏆 Acknowledgements
+Developed for the **FOSSEE Scilab GUIVerse Hackathon 2026**. 
+
+## 📝 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
